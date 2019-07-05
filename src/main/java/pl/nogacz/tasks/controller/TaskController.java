@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.nogacz.tasks.domain.TaskDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,12 +17,12 @@ import java.util.List;
 public class TaskController {
     @RequestMapping(method = RequestMethod.GET, value = "tasks")
     public List<TaskDto> getTasks() {
-        return null;
+        return new ArrayList<>();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "task")
     public TaskDto getTask(@RequestParam("id") Long taskId) {
-        return null;
+        return new TaskDto((long) 1, "title", "content");
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
