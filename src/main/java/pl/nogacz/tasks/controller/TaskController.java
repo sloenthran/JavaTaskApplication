@@ -1,12 +1,13 @@
 package pl.nogacz.tasks.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import pl.nogacz.tasks.domain.Task;
 import pl.nogacz.tasks.domain.TaskDto;
-
-import java.util.ArrayList;
+import pl.nogacz.tasks.mapper.TaskMapper;
+import pl.nogacz.tasks.service.DbService;
 import java.util.List;
 
 /**
@@ -15,24 +16,38 @@ import java.util.List;
 @RestController
 @RequestMapping("v1/task")
 public class TaskController {
-    @RequestMapping(method = RequestMethod.GET, value = "tasks")
+    @Autowired
+    private DbService dbService;
+
+    @Autowired
+    private TaskMapper taskMapper;
+
+    @GetMapping(value = "tasks")
     public List<TaskDto> getTasks() {
-        return new ArrayList<>();
+        return taskMapper.mapToTaskDtoList(dbService.getAllTasks());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "task")
+    @GetMapping(value = "task")
     public TaskDto getTask(@RequestParam("id") Long taskId) {
-        return new TaskDto((long) 1, "title", "content");
+        Task task = dbService.getTask(taskId);
+
+        if(task == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "This ID is not found in this database!"
+            );
+        } else {
+            return taskMapper.mapToTaskDto(task);
+        }
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteTask")
+    @DeleteMapping(value = "task")
     public void deleteTask(@RequestParam("id") Long taskId) {}
 
-    @RequestMapping(method = RequestMethod.PUT, value = "updateTask")
+    @PutMapping(value = "task")
     public TaskDto updateTask(@RequestParam("task") TaskDto task) {
         return null;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createTask")
+    @PostMapping(value = "task")
     public void createTask(@RequestParam("task") TaskDto task) {}
 }
