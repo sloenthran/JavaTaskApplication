@@ -12,7 +12,7 @@ REST, Java 8, MySQL, Hibernate, Spring Boot
 
 All endpoint need `ContentType` set to `application/json`
 
-* Get task - `GET` http://localhost:8080/v1/task/getTask?id=`taskId`
+* Get task - `GET` http://localhost:8080/v1/task/getTask?id = `taskId`
 * Get tasks - `GET` http://localhost:8080/v1/task/getTasks
 * Create task - `POST` http://localhost:8080/v1/task/createTask
     ~~~~
@@ -25,4 +25,4 @@ All endpoint need `ContentType` set to `application/json`
 	"title": "editedTitle",
 	"content": "editedContent"
     ~~~~
-* Delete task - `DELETE` http://localhost:8080/v1/task/deleteTask?id=`taskId`
+* Delete task - `DELETE` http://localhost:8080/v1/task/deleteTask?id = `taskId`
