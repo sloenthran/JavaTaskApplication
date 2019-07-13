@@ -8,7 +8,7 @@ REST application to manage tasks written in Java :)
 REST, Java 8, MySQL, Hibernate, Spring Boot
 
 
-## EndPoint
+## Endpoints
 
 All endpoint need `ContentType` set to `application/json`
 
