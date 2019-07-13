@@ -1,10 +1,7 @@
 package pl.nogacz.tasks.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-import pl.nogacz.tasks.domain.Task;
 import pl.nogacz.tasks.domain.TaskDto;
 import pl.nogacz.tasks.mapper.TaskMapper;
 import pl.nogacz.tasks.service.DbService;
@@ -14,7 +11,7 @@ import java.util.List;
  * @author Dawid Nogacz on 05.07.2019
  */
 @RestController
-@RequestMapping("v1/task")
+@RequestMapping(value = "v1/task", consumes = "application/json", produces = "application/json")
 public class TaskController {
     @Autowired
     private DbService dbService;
@@ -22,32 +19,28 @@ public class TaskController {
     @Autowired
     private TaskMapper taskMapper;
 
-    @GetMapping(value = "tasks")
+    @GetMapping(value = "getTasks")
     public List<TaskDto> getTasks() {
         return taskMapper.mapToTaskDtoList(dbService.getAllTasks());
     }
 
-    @GetMapping(value = "task")
-    public TaskDto getTask(@RequestParam("id") Long taskId) {
-        Task task = dbService.getTask(taskId);
-
-        if(task == null) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "This ID is not found in this database!"
-            );
-        } else {
-            return taskMapper.mapToTaskDto(task);
-        }
+    @GetMapping(value = "getTask")
+    public TaskDto getTask(@RequestParam("id") Long taskId) throws TaskNotFoundException {
+        return taskMapper.mapToTaskDto(dbService.getTask(taskId).orElseThrow(TaskNotFoundException::new));
     }
 
-    @DeleteMapping(value = "task")
-    public void deleteTask(@RequestParam("id") Long taskId) {}
-
-    @PutMapping(value = "task")
-    public TaskDto updateTask(@RequestParam("task") TaskDto task) {
-        return null;
+    @DeleteMapping(value = "deleteTask")
+    public void deleteTask(@RequestParam("id") Long taskId) {
+        dbService.deleteTask(taskId);
     }
 
-    @PostMapping(value = "task")
-    public void createTask(@RequestParam("task") TaskDto task) {}
+    @PutMapping(value = "updateTask")
+    public TaskDto updateTask(@RequestBody TaskDto task) {
+        return taskMapper.mapToTaskDto(dbService.saveTask(taskMapper.mapToTask(task)));
+    }
+
+    @PostMapping(value = "createTask")
+    public void createTask(@RequestBody TaskDto task) {
+        dbService.saveTask(taskMapper.mapToTask(task));
+    }
 }
