@@ -23,5 +23,5 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.8'
 
     annotationProcessor 'org.projectlombok:lombok:1.18.8'
-    //providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
