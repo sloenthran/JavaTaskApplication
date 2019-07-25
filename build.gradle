@@ -4,7 +4,7 @@ plugins {
 }
 
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'war'
+//apply plugin: 'war'
 
 group = 'pl.nogacz'
 version = '0.0.1-SNAPSHOT'
