@@ -11,7 +11,8 @@ import java.util.List;
  * @author Dawid Nogacz on 05.07.2019
  */
 @RestController
-@RequestMapping(value = "v1/task", consumes = "application/json", produces = "application/json")
+@CrossOrigin(origins = "*")
+@RequestMapping(value = "v1/task", produces = "application/json")
 public class TaskController {
     @Autowired
     private DbService dbService;
@@ -34,12 +35,12 @@ public class TaskController {
         dbService.deleteTask(taskId);
     }
 
-    @PutMapping(value = "updateTask")
+    @PutMapping(value = "updateTask", consumes = "application/json")
     public TaskDto updateTask(@RequestBody TaskDto task) {
         return taskMapper.mapToTaskDto(dbService.saveTask(taskMapper.mapToTask(task)));
     }
 
-    @PostMapping(value = "createTask")
+    @PostMapping(value = "createTask", consumes = "application/json")
     public void createTask(@RequestBody TaskDto task) {
         dbService.saveTask(taskMapper.mapToTask(task));
     }
