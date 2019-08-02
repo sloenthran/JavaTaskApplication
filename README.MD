@@ -1,11 +1,11 @@
 # JavaTaskApplication
 
-REST application to manage tasks written in Java :)
+REST application to manage tasks in Trello written in Java :)
 
 
 ## Technologies
 
-REST, Java 8, MySQL, Hibernate, Spring Boot
+REST, Java 8, MySQL, Hibernate, Spring Boot, TrelloAPI
 
 
 ## Endpoints
