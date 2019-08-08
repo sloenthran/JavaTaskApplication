@@ -11,7 +11,7 @@ import java.util.List;
  * @author Dawid Nogacz on 05.07.2019
  */
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 @RequestMapping(value = "v1/task", produces = "application/json")
 public class TaskController {
     @Autowired

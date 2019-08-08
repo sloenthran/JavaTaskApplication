@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * @author Dawid Nogacz on 02.08.2019
  */
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 @RequestMapping(value = "v1/trello", produces = "application/json")
 public class TrelloController {
     @Autowired
