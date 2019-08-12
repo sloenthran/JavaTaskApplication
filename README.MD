@@ -7,6 +7,9 @@ REST application to manage tasks in Trello written in Java :)
 
 REST, Java 8, MySQL, Hibernate, Spring Boot, TrelloAPI
 
+## Live demo
+
+https://sloenthran.github.io/JavaTaskApplication/
 
 ## Endpoints
 
