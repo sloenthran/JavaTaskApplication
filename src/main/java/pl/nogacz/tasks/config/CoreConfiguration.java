@@ -2,6 +2,7 @@ package pl.nogacz.tasks.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -13,6 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author Dawid Nogacz on 02.08.2019
  */
 @EnableSwagger2
+@EnableScheduling
 @Configuration
 public class CoreConfiguration {
     @Bean
