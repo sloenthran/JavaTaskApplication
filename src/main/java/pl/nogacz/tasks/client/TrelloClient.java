@@ -1,8 +1,8 @@
 package pl.nogacz.tasks.client;
 
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -19,14 +19,10 @@ import java.util.*;
  * @author Dawid Nogacz on 02.08.2019
  */
 @Component
+@AllArgsConstructor
 public class TrelloClient {
     private RestTemplate restTemplate;
     private TrelloConfig trelloConfig;
-
-    public TrelloClient(@Autowired RestTemplate restTemplate, @Autowired TrelloConfig trelloConfig) {
-        this.restTemplate = restTemplate;
-        this.trelloConfig = trelloConfig;
-    }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TrelloClient.class);
 

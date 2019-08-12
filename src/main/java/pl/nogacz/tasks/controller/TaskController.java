@@ -1,6 +1,6 @@
 package pl.nogacz.tasks.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.nogacz.tasks.domain.TaskDto;
 import pl.nogacz.tasks.mapper.TaskMapper;
@@ -13,11 +13,9 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping(value = "v1/task", produces = "application/json")
+@AllArgsConstructor
 public class TaskController {
-    @Autowired
     private DbService dbService;
-
-    @Autowired
     private TaskMapper taskMapper;
 
     @GetMapping(value = "getTasks")

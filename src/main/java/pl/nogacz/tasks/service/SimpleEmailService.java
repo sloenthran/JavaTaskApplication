@@ -1,8 +1,8 @@
 package pl.nogacz.tasks.service;
 
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,8 +13,8 @@ import pl.nogacz.tasks.domain.Mail;
  * @author Dawid Nogacz on 08.08.2019
  */
 @Service
+@AllArgsConstructor
 public class SimpleEmailService {
-    @Autowired
     private JavaMailSender javaMailSender;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SimpleMailMessage.class);
