@@ -2,7 +2,6 @@ package pl.nogacz.tasks.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import pl.nogacz.tasks.client.TrelloClient;
 import pl.nogacz.tasks.domain.CreatedTrelloCard;
 import pl.nogacz.tasks.domain.dto.TrelloBoardDto;
 import pl.nogacz.tasks.domain.dto.TrelloCardDto;
