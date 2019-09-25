@@ -8,7 +8,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import pl.nogacz.tasks.config.TrelloConfig;
-import pl.nogacz.tasks.domain.CreatedTrelloCard;
+import pl.nogacz.tasks.domain.dto.CreatedTrelloCardDto;
 import pl.nogacz.tasks.domain.dto.TrelloBoardDto;
 import pl.nogacz.tasks.domain.dto.TrelloCardDto;
 
@@ -46,7 +46,7 @@ public class TrelloClient {
         }
     }
 
-    public CreatedTrelloCard createNewCard(TrelloCardDto trelloCardDto) {
+    public CreatedTrelloCardDto createNewCard(TrelloCardDto trelloCardDto) {
         HashMap<String, String> params = new HashMap<>();
 
         params.put("name", trelloCardDto.getName());
@@ -56,7 +56,7 @@ public class TrelloClient {
 
         URI url = generateUrl("/cards", params);
 
-        return restTemplate.postForObject(url, null, CreatedTrelloCard.class);
+        return restTemplate.postForObject(url, null, CreatedTrelloCardDto.class);
     }
 
     private URI generateUrl(String host, HashMap<String, String> params) {

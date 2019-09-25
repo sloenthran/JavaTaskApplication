@@ -1,20 +1,16 @@
-package pl.nogacz.tasks.domain;
+package pl.nogacz.tasks.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.nogacz.tasks.domain.dto.TrelloBadgesDto;
 
-/**
- * @author Dawid Nogacz on 05.08.2019
- */
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreatedTrelloCard {
+public class CreatedTrelloCardDto {
     @JsonProperty("id")
     private String id;
 

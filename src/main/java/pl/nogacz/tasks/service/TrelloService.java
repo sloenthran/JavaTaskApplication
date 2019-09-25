@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.nogacz.tasks.client.TrelloClient;
 import pl.nogacz.tasks.config.AdminConfig;
-import pl.nogacz.tasks.domain.CreatedTrelloCard;
+import pl.nogacz.tasks.domain.dto.CreatedTrelloCardDto;
 import pl.nogacz.tasks.domain.Mail;
 import pl.nogacz.tasks.domain.dto.TrelloBoardDto;
 import pl.nogacz.tasks.domain.dto.TrelloCardDto;
@@ -27,8 +27,8 @@ public class TrelloService {
         return trelloClient.getTrelloBoards();
     }
 
-    public CreatedTrelloCard createNewCard(final TrelloCardDto trelloCardDto) {
-        CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
+    public CreatedTrelloCardDto createNewCard(final TrelloCardDto trelloCardDto) {
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
 
         ofNullable(newCard).ifPresent(card -> emailService.send(new Mail(
                 adminConfig.getAdminMail(),

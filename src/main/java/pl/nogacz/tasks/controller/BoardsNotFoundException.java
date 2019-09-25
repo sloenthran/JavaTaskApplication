@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  * @author Dawid Nogacz on 05.08.2019
  */
 @ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Boards not found")
-class BoardsNotFoundException extends Exception {
+public class BoardsNotFoundException extends Exception {
 }

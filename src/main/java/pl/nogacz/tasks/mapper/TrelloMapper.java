@@ -2,8 +2,10 @@ package pl.nogacz.tasks.mapper;
 
 import org.springframework.stereotype.Component;
 import pl.nogacz.tasks.domain.TrelloBoard;
+import pl.nogacz.tasks.domain.TrelloCard;
 import pl.nogacz.tasks.domain.TrelloList;
 import pl.nogacz.tasks.domain.dto.TrelloBoardDto;
+import pl.nogacz.tasks.domain.dto.TrelloCardDto;
 import pl.nogacz.tasks.domain.dto.TrelloListDto;
 
 import java.util.List;
@@ -50,5 +52,23 @@ public class TrelloMapper {
         return trelloLists.stream()
                 .map(trelloList -> new TrelloListDto(trelloList.getId(), trelloList.getName(), trelloList.isClosed()))
                 .collect(Collectors.toList());
+    }
+
+    public TrelloCardDto mapToCardDto(final TrelloCard trelloCard) {
+        return new TrelloCardDto(
+                trelloCard.getName(),
+                trelloCard.getDescription(),
+                trelloCard.getPosition(),
+                trelloCard.getListId()
+        );
+    }
+
+    public TrelloCard mapToCard(final TrelloCardDto trelloCard) {
+        return new TrelloCard(
+                trelloCard.getName(),
+                trelloCard.getDescription(),
+                trelloCard.getPosition(),
+                trelloCard.getListId()
+        );
     }
 }

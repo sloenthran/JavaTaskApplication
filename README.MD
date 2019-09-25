@@ -1,4 +1,4 @@
-# JavaTaskApplication
+# JavaTaskApplication [![Build Status](https://travis-ci.org/sloenthran/JavaTaskApplication.svg?branch=master)](https://travis-ci.org/sloenthran/JavaTaskApplication)
 
 REST application to manage tasks in Trello written in Java :)
 

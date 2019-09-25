@@ -8,8 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.web.client.RestTemplate;
 import pl.nogacz.tasks.config.TrelloConfig;
-import pl.nogacz.tasks.domain.CreatedTrelloCard;
-import pl.nogacz.tasks.domain.dto.TrelloBadgesDto;
+import pl.nogacz.tasks.domain.dto.CreatedTrelloCardDto;
 import pl.nogacz.tasks.domain.dto.TrelloBoardDto;
 import pl.nogacz.tasks.domain.dto.TrelloCardDto;
 
@@ -72,7 +71,7 @@ public class TrelloClientTest {
                 "list_id"
         );
 
-        CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard(
+        CreatedTrelloCardDto createdTrelloCardDto = new CreatedTrelloCardDto(
                 "1",
                 "Test task",
                 "http://test.com",
@@ -81,10 +80,10 @@ public class TrelloClientTest {
 
         URI url = new URI("http://test.com/cards?key=test&token=test&pos=top&name=Test%20task&idList=list_id&desc=Test%20description");
 
-        when(restTemplate.postForObject(url, null, CreatedTrelloCard.class)).thenReturn(createdTrelloCard);
+        when(restTemplate.postForObject(url, null, CreatedTrelloCardDto.class)).thenReturn(createdTrelloCardDto);
 
         //When
-        CreatedTrelloCard newCard = trelloClient.createNewCard(trelloCardDto);
+        CreatedTrelloCardDto newCard = trelloClient.createNewCard(trelloCardDto);
 
         //Then
         assertEquals("1", newCard.getId());
