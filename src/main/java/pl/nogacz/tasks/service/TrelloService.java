@@ -9,6 +9,7 @@ import pl.nogacz.tasks.domain.Mail;
 import pl.nogacz.tasks.domain.dto.TrelloBoardDto;
 import pl.nogacz.tasks.domain.dto.TrelloCardDto;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static java.util.Optional.ofNullable;
@@ -17,6 +18,7 @@ import static java.util.Optional.ofNullable;
  * @author Dawid Nogacz on 12.08.2019
  */
 @Service
+@Transactional
 @AllArgsConstructor
 public class TrelloService {
     private TrelloClient trelloClient;

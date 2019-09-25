@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * @author Dawid Nogacz on 10.07.2019
  */
-@Transactional
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Long> {
     @Override
