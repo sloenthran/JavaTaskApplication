@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.nogacz.tasks.domain.TrelloBoard;
+import pl.nogacz.tasks.domain.TrelloCard;
+import pl.nogacz.tasks.domain.TrelloList;
 import pl.nogacz.tasks.domain.dto.TrelloBoardDto;
+import pl.nogacz.tasks.domain.dto.TrelloCardDto;
+import pl.nogacz.tasks.domain.dto.TrelloListDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,17 +83,63 @@ public class TrelloMapperTest {
 
     @Test
     public void mapToList() {
+        //Given
+        List<TrelloListDto> trelloListsDto = new ArrayList<>();
+
+        trelloListsDto.add(new TrelloListDto("1", "B", true));
+        trelloListsDto.add(new TrelloListDto("1", "B", true));
+        trelloListsDto.add(new TrelloListDto("1", "B", true));
+
+        //When
+        List<TrelloList> trelloLists = trelloMapper.mapToList(trelloListsDto);
+
+        //Then
+        assertEquals(3, trelloLists.size());
     }
 
     @Test
     public void mapToListDto() {
+        //Given
+        List<TrelloList> trelloLists = new ArrayList<>();
+
+        trelloLists.add(new TrelloList("1", "B", true));
+        trelloLists.add(new TrelloList("1", "B", true));
+        trelloLists.add(new TrelloList("1", "B", true));
+
+        //When
+        List<TrelloListDto> trelloListsDto = trelloMapper.mapToListDto(trelloLists);
+
+        //Then
+        assertEquals(3, trelloListsDto.size());
     }
 
     @Test
     public void mapToCardDto() {
+        //Given
+        TrelloCard trelloCard = new TrelloCard("AAA", "BBB", "CCC", "DDD");
+
+        //When
+        TrelloCardDto trelloCardDto = trelloMapper.mapToCardDto(trelloCard);
+
+        //Then
+        assertEquals(trelloCardDto.getName(), trelloCard.getName());
+        assertEquals(trelloCardDto.getDescription(), trelloCard.getDescription());
+        assertEquals(trelloCardDto.getPosition(), trelloCard.getPosition());
+        assertEquals(trelloCardDto.getListId(), trelloCard.getListId());
     }
 
     @Test
     public void mapToCard() {
+        //Given
+        TrelloCardDto trelloCardDto = new TrelloCardDto("AAA", "BBB", "CCC", "DDD");
+
+        //When
+        TrelloCard trelloCard = trelloMapper.mapToCard(trelloCardDto);
+
+        //Then
+        assertEquals(trelloCardDto.getName(), trelloCard.getName());
+        assertEquals(trelloCardDto.getDescription(), trelloCard.getDescription());
+        assertEquals(trelloCardDto.getPosition(), trelloCard.getPosition());
+        assertEquals(trelloCardDto.getListId(), trelloCard.getListId());
     }
 }

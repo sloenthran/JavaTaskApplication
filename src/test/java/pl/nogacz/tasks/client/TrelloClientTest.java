@@ -45,7 +45,7 @@ public class TrelloClientTest {
     public void shouldFetchTrelloBoards() throws Exception {
         //Given
         TrelloBoardDto[] trelloBoards = new TrelloBoardDto[1];
-        trelloBoards[0] = new TrelloBoardDto("test_board", "test_id", new ArrayList<>());
+        trelloBoards[0] = new TrelloBoardDto("test_id", "test_board", new ArrayList<>());
 
         URI url = new URI("http://test.com/members/test/boards?key=test&token=test&lists=all&fields=name,id");
 
