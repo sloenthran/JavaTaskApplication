@@ -73,8 +73,8 @@ public class TrelloMapperTest {
         TrelloBoardDto trelloBoardDto = trelloMapper.mapToBoardDto(trelloBoard);
 
         //Then
-        assertEquals(trelloBoardDto.getId(), trelloBoard.getId());
-        assertEquals(trelloBoardDto.getName(), trelloBoard.getName());
+        assertEquals(trelloBoard.getId(), trelloBoardDto.getId());
+        assertEquals(trelloBoard.getName(), trelloBoardDto.getName());
     }
 
     @Test
