@@ -1,4 +1,4 @@
-package pl.nogacz.tasks.client;
+package pl.nogacz.tasks.trello.client;
 
 import org.junit.Before;
 import org.junit.Test;

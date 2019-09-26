@@ -2,7 +2,7 @@ package pl.nogacz.tasks.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.nogacz.tasks.client.TrelloClient;
+import pl.nogacz.tasks.trello.client.TrelloClient;
 import pl.nogacz.tasks.config.AdminConfig;
 import pl.nogacz.tasks.domain.dto.CreatedTrelloCardDto;
 import pl.nogacz.tasks.domain.Mail;
