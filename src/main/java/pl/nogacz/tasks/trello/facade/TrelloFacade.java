@@ -1,5 +1,6 @@
 package pl.nogacz.tasks.trello.facade;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.nogacz.tasks.controller.BoardsNotFoundException;
 import pl.nogacz.tasks.domain.TrelloBoard;
@@ -15,16 +16,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@AllArgsConstructor
 public class TrelloFacade {
     private TrelloService trelloService;
     private TrelloMapper trelloMapper;
     private TrelloValidator trelloValidator;
-
-    public TrelloFacade(TrelloService trelloService, TrelloMapper trelloMapper, TrelloValidator trelloValidator) {
-        this.trelloService = trelloService;
-        this.trelloMapper = trelloMapper;
-        this.trelloValidator = trelloValidator;
-    }
 
     public List<TrelloBoardDto> fetchTrelloBoards() {
         List<TrelloBoard> trelloBoards = trelloMapper.mapToBoardList(trelloService.getTrelloBoards());
