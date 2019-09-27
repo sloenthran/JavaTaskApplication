@@ -61,4 +61,19 @@ public class TaskMapperTest {
         //Then
         assertEquals(taskDtoList.size(), 3);
     }
+
+    @Test
+    public void mapToTaskList() {
+        //Given
+        List<TaskDto> taskDtoList = new ArrayList<>();
+        taskDtoList.add(new TaskDto(1L, "test", "test"));
+        taskDtoList.add(new TaskDto(1L, "test", "test"));
+        taskDtoList.add(new TaskDto(1L, "test", "test"));
+
+        //When
+        List<Task> taskList = taskMapper.mapToTaskList(taskDtoList);
+
+        //Then
+        assertEquals(taskList.size(), 3);
+    }
 }
