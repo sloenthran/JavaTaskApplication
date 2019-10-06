@@ -4,3 +4,5 @@ pluginManagement {
     }
 }
 rootProject.name = 'tasks'
+
+include 'integration.test'
