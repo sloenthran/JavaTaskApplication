@@ -6,3 +6,6 @@ jdk:
 
 script:
   - ./gradlew build
+
+ignore:
+  - integration.test/*
