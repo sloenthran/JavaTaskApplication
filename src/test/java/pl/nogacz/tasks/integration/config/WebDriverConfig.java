@@ -1,10 +1,10 @@
-package integration.config;
+package pl.nogacz.tasks.integration.config;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import integration.util.DriverType;
-import integration.util.Resources;
+import pl.nogacz.tasks.integration.util.DriverType;
+import pl.nogacz.tasks.integration.util.Resources;
 
 public class WebDriverConfig {
     public static WebDriver getDriver(DriverType driverType) {

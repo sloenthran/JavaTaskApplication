@@ -1,4 +1,4 @@
-package integration.util;
+package pl.nogacz.tasks.integration.util;
 
 import java.net.URL;
 
