@@ -19,6 +19,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation('org.springframework.boot:spring-boot-starter-actuator')
     implementation('org.springframework.boot:spring-boot-starter-mail:2.1.7.RELEASE')
+    implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
     implementation('com.h2database:h2')
     implementation('com.google.code.gson:gson:2.8.2')
 
@@ -27,7 +28,7 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
 
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile('org.seleniumhq.selenium:selenium-java:3.141.59')
 
     compile('org.projectlombok:lombok:1.18.8')
     annotationProcessor('org.projectlombok:lombok:1.18.8')
