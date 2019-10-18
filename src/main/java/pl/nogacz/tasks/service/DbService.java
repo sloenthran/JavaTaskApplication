@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import pl.nogacz.tasks.domain.Task;
 import pl.nogacz.tasks.repository.TaskRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import java.util.Optional;
  * @author Dawid Nogacz on 10.07.2019
  */
 @Service
+@Transactional
 public class DbService {
     @Autowired
     private TaskRepository taskRepository;

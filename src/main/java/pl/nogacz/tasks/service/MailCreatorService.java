@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import pl.nogacz.tasks.config.AdminConfig;
+import pl.nogacz.tasks.config.CompanyConfig;
 
 @Service
 @AllArgsConstructor
@@ -14,13 +15,8 @@ public class MailCreatorService {
     @Qualifier("templateEngine")
     private TemplateEngine templateEngine;
 
-    @Value("${info.company.name}")
-    private String companyName;
-
-    @Value("${info.company.mail}")
-    private String companyMail;
-
     private AdminConfig adminConfig;
+    private CompanyConfig companyConfig;
 
     public String buildTrelloCardEmail(String message) {
         Context context = new Context();
@@ -29,8 +25,8 @@ public class MailCreatorService {
         context.setVariable("button", "Visit website");
         context.setVariable("admin_name", adminConfig.getAdminName());
         context.setVariable("goodbye_message", "See you later...");
-        context.setVariable("company_name", companyName);
-        context.setVariable("company_mail", companyMail);
+        context.setVariable("company_name", companyConfig.getCompanyName());
+        context.setVariable("company_mail", companyConfig.getCompanyMail());
         return templateEngine.process("mail/created-trello-card", context);
     }
 }
