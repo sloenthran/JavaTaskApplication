@@ -6,13 +6,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import pl.nogacz.tasks.domain.Mail;
 
-/**
- * @author Dawid Nogacz on 08.08.2019
- */
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+
 @RunWith(MockitoJUnitRunner.class)
 public class SimpleEmailServiceTest {
     @InjectMocks
@@ -26,15 +26,15 @@ public class SimpleEmailServiceTest {
         //Given
         Mail mail = new Mail("test@tset.com", null, "Test", "Test message");
 
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
+/*        SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mail.getMessage());
+        mailMessage.setText(mail.getMessage());*/
 
         //When
         simpleEmailService.send(mail);
 
         //Then
-        Mockito.verify(javaMailSender, Mockito.times(1)).send(mailMessage);
+        Mockito.verify(javaMailSender, times(1)).send(any(MimeMessagePreparator.class));
     }
 }
