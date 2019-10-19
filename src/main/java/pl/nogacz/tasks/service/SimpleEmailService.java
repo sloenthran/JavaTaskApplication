@@ -36,11 +36,16 @@ public class SimpleEmailService {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+            if(mail.getSubject().equals("JavaTask: Once a day email")) {
+                messageHelper.setText(mailCreatorService.buildNumberOfTasksMail(mail.getMessage()), true);
+            } else {
+                messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+
+            }
         };
     }
 
-    private SimpleMailMessage createMailMessage( Mail mail) {
+/*    private SimpleMailMessage createMailMessage( Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
@@ -51,5 +56,5 @@ public class SimpleEmailService {
         }
 
         return mailMessage;
-    }
+    }*/
 }

@@ -25,7 +25,7 @@ public class EmailScheduler {
         simpleEmailService.send(new Mail(
                 adminConfig.getAdminMail(),
                 null,
-                "JavaTask: Once a dau email",
+                "JavaTask: Once a day email",
                 "Currently in database you got: " + size + " " + getCorrectTipTask(size)
         ));
     }
