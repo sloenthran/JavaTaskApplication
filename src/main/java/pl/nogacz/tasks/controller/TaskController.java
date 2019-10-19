@@ -12,33 +12,33 @@ import java.util.List;
  */
 @RestController
 @CrossOrigin("*")
-@RequestMapping(value = "v1/task", produces = "application/json")
+@RequestMapping(value = "/v1", produces = "application/json")
 @AllArgsConstructor
 public class TaskController {
     private DbService dbService;
     private TaskMapper taskMapper;
 
-    @GetMapping(value = "getTasks")
+    @GetMapping(value = "/tasks")
     public List<TaskDto> getTasks() {
         return taskMapper.mapToTaskDtoList(dbService.getAllTasks());
     }
 
-    @GetMapping(value = "getTask")
-    public TaskDto getTask(@RequestParam("id") Long taskId) throws TaskNotFoundException {
+    @GetMapping(value = "/tasks/{id}")
+    public TaskDto getTask(@PathVariable("id") Long taskId) throws TaskNotFoundException {
         return taskMapper.mapToTaskDto(dbService.getTask(taskId).orElseThrow(TaskNotFoundException::new));
     }
 
-    @DeleteMapping(value = "deleteTask")
-    public void deleteTask(@RequestParam("id") Long taskId) {
+    @DeleteMapping(value = "/tasks/{id}")
+    public void deleteTask(@PathVariable("id") Long taskId) {
         dbService.deleteTask(taskId);
     }
 
-    @PutMapping(value = "updateTask", consumes = "application/json")
+    @PutMapping(value = "/tasks", consumes = "application/json")
     public TaskDto updateTask(@RequestBody TaskDto task) {
         return taskMapper.mapToTaskDto(dbService.saveTask(taskMapper.mapToTask(task)));
     }
 
-    @PostMapping(value = "createTask", consumes = "application/json")
+    @PostMapping(value = "/tasks", consumes = "application/json")
     public void createTask(@RequestBody TaskDto task) {
         dbService.saveTask(taskMapper.mapToTask(task));
     }

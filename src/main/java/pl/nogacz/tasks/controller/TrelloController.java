@@ -16,17 +16,17 @@ import java.util.List;
 public class TrelloController {
     private TrelloFacade trelloFacade;
 
-    @GetMapping(value = "getTrelloBoards")
+    @GetMapping(value = "/boards")
     public List<TrelloBoardDto> getTrelloBoards() {
         return trelloFacade.fetchTrelloBoards();
     }
 
-    @GetMapping(value = "getSpecificTrelloBoards")
-    public List<TrelloBoardDto> getSpecificTrelloBoards(@RequestParam String boardName) throws BoardsNotFoundException  {
+    @GetMapping(value = "/boards/{boardName}")
+    public List<TrelloBoardDto> getSpecificTrelloBoards(@PathVariable String boardName) throws BoardsNotFoundException  {
         return trelloFacade.getSpecificTrelloBoard(boardName);
     }
 
-    @PostMapping(value = "createTrelloCard", consumes = "application/json")
+    @PostMapping(value = "/cards", consumes = "application/json")
     public CreatedTrelloCardDto createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
         return trelloFacade.createCard(trelloCardDto);
     }
